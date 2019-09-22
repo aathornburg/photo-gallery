@@ -14,7 +14,6 @@ export class PhotoService {
 
   public initializeSavedPhotos(): void {
     this.storage.get('photos').then((photos) => {
-      console.log(photos);
       this.photos = photos || [];
     });
   }
@@ -32,10 +31,7 @@ export class PhotoService {
         new Photo('data:image/jpeg;base64,' + imageData)
       );
 
-      console.log(this.photos);
-
       this.storage.set('photos', this.photos);
-      console.log(this.photos);
     }, (err) => {
       // Handle error
       console.log("Camera issue:" + err);
